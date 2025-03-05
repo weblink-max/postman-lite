@@ -1,0 +1,14 @@
+*{
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  box-sizing: border-box;
+  
+}
+
+body,option, span, #body{
+  font-family: "Nunito", monospace;
+  font-weight: 700;
+}
+#body, #res{
+  height: 200px;
+}
