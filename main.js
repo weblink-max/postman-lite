@@ -51,10 +51,8 @@ function method(){
 
 function localhost(){
   let api_endpoint = document.querySelector("#api");
-  if(api_endpoint.value=="http://localhost:3000"){
+  if(api_endpoint.value !=""){
     api_endpoint.value="";
-  }else{
-    api_endpoint.value = "http://localhost:3000";
   }
 }
   
@@ -101,7 +99,7 @@ function response(msg,res_time){
   let html =`
   <div class="form-floating text-secondary mt-3">
     <textarea class="form-control" id="res" value="${formattedMsg}" readonly>${formattedMsg}</textarea>
-    <label for="res">${res_time ? `Responsed in ${res_time}ms`: "Unsuccessful to fetch"}</label>
+    <label for="res">${res_time ? `Responsed in ${res_time}s`: "Unsuccessful to fetch"}</label>
   </div>
   `;
   
@@ -173,9 +171,9 @@ async function request(){
     let res = await fetch(api_endpoint,config);
     let json = await res.json();
     let req_end_time = Date.now();
-    let def = req_end_time-req_start_time;
+    let def = (req_end_time-req_start_time)/1000;
     res_view.innerHTML=""
-    card("Request successful!",  "success")
+    card("Request successful!", "success")
     response (JSON.stringify(json),def)
   }catch(e){
     res_view.innerHTML=""
